@@ -33,7 +33,7 @@ services:
       - "8081:80"
     environment:
       PMA_HOST: db
-      PMA_USER: pwuser
+      PMA_USER: wpuser
       PMA_PASSWORD: ih9IGEG8YFp2
 
 volumes:
