@@ -1,30 +1,41 @@
-version: '3.3'
-
+version: "3"
 services:
   db:
-    image: mariadb
+    image: mysql:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: rootpass
-      MYSQL_DATABASE: wordpress
+      MYSQL_ROOT_PASSWORD: a2TV0ioGMA3E
+      MYSQL_DATABASE: MdeMaruja
       MYSQL_USER: wpuser
-      MYSQL_PASSWORD: wppass
+      MYSQL_PASSWORD: ih9IGEG8YFp2
     volumes:
-     - db_data:/var/lib/mysql
+      - db:/var/lib/mysql
 
   wordpress:
+    depends_on:
+      - db
     image: wordpress:latest
     restart: always
     ports:
-     - "80:80"
+      - "80:80"
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_USER: wpuser
-      WORDPRESS_DB_PASSWORD: wppass
-      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_PASSWORD: ih9IGEG8YFp2
+      WORDPRESS_DB_NAME: MdeMaruja
     volumes:
-     - wp_data:/var/www/html
+      - wordpress:/var/www/html
 
-  volumes:
-    db_data:
-    wp_data:
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: pwuser
+      PMA_PASSWORD: ih9IGEG8YFp2
+
+volumes:
+  db:
+  wordpress:
