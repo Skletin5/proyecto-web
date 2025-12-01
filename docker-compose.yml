@@ -24,6 +24,7 @@ services:
       WORDPRESS_DB_PASSWORD: ih9IGEG8YFp2
       WORDPRESS_DB_NAME: MdeMaruja
     volumes:
+      - ./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
       - wordpress:/var/www/html
 
   phpmyadmin:
