@@ -1,0 +1,274 @@
+.lte-demo-install {
+
+	text-align: center;
+}
+
+.lte-demo-install > div {
+
+	justify-content: center;
+	gap: 50px;
+	display: flex;
+}
+
+.lte-demo-install .item-screenshot img {
+
+	max-width: 500px;
+}
+
+#lte-ext-backups-demo-list .theme .theme-actions {
+	opacity: 1;
+	top: auto;
+	bottom: 0;
+	-webkit-transform: translateY(0);
+	transform: translateY(0);
+}
+
+#lte-ext-backups-demo-list .theme a.more-details {
+	text-decoration: none;
+}
+
+#lte-ext-backups-demo-list .lte-ext-backups-demo-item.active .theme-actions {
+	display: none;
+}
+
+
+/* status modal */
+
+.fw-ext-backups-demo-status-modal .progress-percent {
+	background: #eee;
+	margin: 10px 30px 16px;
+}
+
+.fw-ext-backups-demo-status-modal .progress-percent > div {
+	background: #5a8539;
+	height: 8px;
+}
+
+/* end: status modal */
+
+
+
+#lte-ext-backups-status {
+	font-size: 13px;
+	font-weight: normal;
+}
+
+#lte-ext-backups-status img {
+	vertical-align: text-bottom;
+}
+
+#lte-ext-backups-archives table thead,
+#lte-ext-backups-archives table tfoot,
+#lte-ext-backups-archives .tablenav.bottom .tablenav-pages,
+#lte-ext-backups-archives .tablenav .bulkactions,
+#lte-ext-backups-archives.no-archives .tablenav {
+	display: none;
+}
+
+.lte-ext-backups-description ul {
+	list-style-type: disc;
+	padding-left: 18px;
+}
+
+
+#lte-backups-loader {
+
+	display: none;
+}
+
+
+/* SoleModal */
+
+body > .fw-sole-modal.fw-modal > .media-modal {
+	z-index: 500000;
+	margin: auto;
+
+	width: 500px !important;
+	height: 300px !important;
+}
+
+body > .fw-sole-modal.fw-modal > .media-modal-backdrop {
+/*
+	z-index: 499999;
+	background-color: transparent;
+*/	
+	background: #000;
+}
+
+body > .fw-sole-modal.fw-modal > .media-modal > .media-modal-content {
+	-webkit-box-shadow: 0 1px 10px rgba(0,0,0,.25);
+	box-shadow: 0 0px 10px rgba(0,0,0,.25);
+}
+
+body > .fw-sole-modal.fw-modal .fw-sole-modal-content {
+
+	text-align: center;
+}
+
+body > .fw-sole-modal.fw-modal .fw-sole-modal-content h2 {
+	font-size: 18px;
+	line-height: initial;
+}
+
+body > .fw-sole-modal.fw-modal .fw-sole-modal-content h2:first-child {
+	margin-top: 0;
+}
+
+body > .fw-sole-modal.fw-modal .fw-sole-modal-content img.wp-spinner {
+	vertical-align: baseline;
+	position: relative;
+	display: block;
+	margin: 30px auto 0;
+}
+
+body > .fw-sole-modal.fw-modal .fw-sole-modal-content p {
+
+	margin-top: 10px;
+	font-size: 14px;
+	line-height: 19px;
+}
+
+.fw-sole-modal.fw-sole-confirm-modal {
+	text-align: center;
+}
+
+.fw-sole-modal.fw-sole-confirm-modal .fw-sole-confirm-button:not(:last-child) {
+	margin-right: 10px;
+}
+
+.fw-sole-modal.fw-sole-confirm-modal .fw-sole-confirm-button {
+	min-width: 65px;
+}
+
+.fw-sole-modal.fw-sole-confirm-modal span.dashicons {
+	font-size: 60px;
+	width: 60px;
+	height: 60px;
+	margin-top: 10px;
+}
+
+.fw-sole-modal.fw-sole-confirm-modal.fw-sole-confirm-warning span.dashicons {
+	color: #e04139;
+}
+
+.fw-sole-modal.fw-sole-confirm-modal.fw-sole-confirm-info span.dashicons {
+	color: #5dab20;
+}
+
+
+.lte-modal > .media-modal > .media-modal-close {
+	opacity: 0;
+
+	-webkit-transition: opacity .3s ease-in; /* For Safari 3.1 to 6.0 */
+	transition: opacity .3s ease-in;
+
+	text-transform: none;
+}
+
+.lte-modal.lte-modal-open > .media-modal > .button-link.media-modal-close {
+	opacity: 1;
+
+	-webkit-transition-duration: .6s;
+	transition-duration: .6s;
+
+	width: 30px;
+	height: 30px;	
+}
+
+.lte-modal.lte-modal-open .button-link.media-modal-close {
+
+	width: 30px;
+	height: 40px;	
+	text-decoration: none;
+	color: #787c82;	
+}
+
+.lte-modal.lte-modal-open .button-link.media-modal-close:hover {
+
+	color: #d63638;
+}
+
+.lte-modal.lte-modal-open .button-link.media-modal-close .media-modal-icon::before {
+
+	content: "\f153";
+	font-size: 16px;
+}
+
+.lte-modal.lte-modal-open > .media-modal > .media-modal-close:focus {
+	outline: 0;
+}
+
+.lte-modal.lte-modal-closing > .media-modal-backdrop {
+	opacity: .0;
+}
+
+.lte-modal.lte-modal-closing > .media-modal > .media-modal-close {
+	opacity: 0;
+
+	-webkit-transition-duration: .1s;
+	transition-duration: .1s;
+}
+
+.lte-modal .media-modal-close:focus {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
+/* end: SoleModal */
+
+
+/* fw.loading */
+
+#lte-loading {
+	position: fixed;
+	top: 50px;
+	right: 50px;
+	bottom: 50px;
+	left: 50px;
+	z-index: 9999999;
+	text-align: center;
+}
+
+#lte-loading.opening {
+	-webkit-animation: fwGrowIn .3s ease-in-out;
+	-moz-animation: fwGrowIn .3s ease-in-out;
+	-ms-animation: fwGrowIn .3s ease-in-out;
+	-o-animation: fwGrowIn .3s ease-in-out;
+	animation: fwGrowIn .3s ease-in-out;
+}
+
+#lte-loading.closing {
+	-webkit-animation: fwGrowOut .3s ease-in-out;
+	-moz-animation: fwGrowOut .3s ease-in-out;
+	-ms-animation: fwGrowOut .3s ease-in-out;
+	-o-animation: fwGrowOut .3s ease-in-out;
+	animation: fwGrowOut .3s ease-in-out;
+
+	-webkit-animation-fill-mode: forwards; /* Chrome, Safari, Opera */
+	animation-fill-mode: forwards;
+}
+
+#lte-loading.closed {
+	display: none;
+}
+
+#lte-loading img {
+	opacity: .4;
+}
+
+/* end: fw.loading */
+
+#lte-ext-backups-log #lte-ext-backups-log-show-button .button-hide,
+#lte-ext-backups-log #lte-ext-backups-log-list {
+	display: none;
+}
+
+#lte-ext-backups-log.show-list #lte-ext-backups-log-show-button .button-view {
+	display: none;
+}
+#lte-ext-backups-log.show-list #lte-ext-backups-log-show-button .button-hide {
+	display: inline;
+}
+#lte-ext-backups-log.show-list #lte-ext-backups-log-list {
+	display: block;
+}

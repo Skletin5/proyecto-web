@@ -1,0 +1,7 @@
+<wpml-config>
+    <admin-texts>
+        <key name="fw_theme_settings_options:sana">
+            <key name="copyrights" />            
+        </key>
+    </admin-texts>
+</wpml-config>

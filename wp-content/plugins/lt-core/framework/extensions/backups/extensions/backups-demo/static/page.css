@@ -1,0 +1,57 @@
+#fw-ext-backups-demo-list .theme .theme-actions {
+	opacity: 1;
+	top: auto;
+	bottom: 0;
+	-webkit-transform: translateY(0);
+	transform: translateY(0);
+}
+
+#fw-ext-backups-demo-list .theme a.more-details {
+	text-decoration: none;
+}
+
+#fw-ext-backups-demo-list .fw-ext-backups-demo-item.active .theme-actions {
+	display: none;
+}
+
+
+/* status modal */
+
+.fw-ext-backups-demo-status-modal .progress-percent {
+	background: #ddd;
+	margin: 0 30px;
+}
+
+.fw-ext-backups-demo-status-modal .progress-percent > div {
+	background: #0085ba;
+	height: 3px;
+}
+
+/* end: status modal */
+
+/* theme not activated */
+.theme-not-activated {
+	text-align: center;
+	padding: 0px;
+}
+
+.theme-not-activated p {
+	margin: 0 0 15px 0;
+	color: #666;
+	font-size: 14px;
+	font-style: italic;
+}
+/*
+.theme-not-activated .button {
+	margin: 0;
+	background: #35973e !important;
+	border-color: #35973e !important;
+	color: #fff !important;
+	transition: all .3 ease;
+}
+
+.theme-not-activated .button:hover {
+	background: #3a9a42 !important;
+	border-color: #3a9a42 !important;
+}
+	*/
