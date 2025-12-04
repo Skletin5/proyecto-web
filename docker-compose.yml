@@ -4,10 +4,10 @@ services:
     image: mysql:latest
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: a2TV0ioGMA3E
-      MYSQL_DATABASE: MdeMaruja
-      MYSQL_USER: wpuser
-      MYSQL_PASSWORD: ih9IGEG8YFp2
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     volumes:
       - db:/var/lib/mysql
 
@@ -20,9 +20,9 @@ services:
       - "80:80"
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: wpuser
-      WORDPRESS_DB_PASSWORD: ih9IGEG8YFp2
-      WORDPRESS_DB_NAME: MdeMaruja
+      WORDPRESS_DB_USER: ${MYSQL_USER}
+      WORDPRESS_DB_PASSWORD: ${MYSQL_PASSWORD}
+      WORDPRESS_DB_NAME: ${MYSQL_DATABASE}
     volumes:
       - ./config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
       - wordpress:/var/www/html
@@ -34,8 +34,8 @@ services:
       - "8081:80"
     environment:
       PMA_HOST: db
-      PMA_USER: wpuser
-      PMA_PASSWORD: ih9IGEG8YFp2
+      PMA_USER: ${MYSQL_USER}
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
 
 volumes:
   db:
