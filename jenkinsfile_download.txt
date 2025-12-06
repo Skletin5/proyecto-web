@@ -2,40 +2,29 @@ pipeline {
     agent any
     
     stages {
-        stage('Clonación de repositorio') {
+        stage('Clonar repositorio') {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/Skletin5/proyecto-web.git'
             }
         }
-        stage('exportación de BD') {
+        stage('Construir contenedores'){
+            steps {
+                sh 'docker-compose down'
+                sh 'docker-compose up -d --build'
+            }
+        }
+        stage('Importación de cambios clonados') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'DB_Data', passwordVariable: 'BD_ROOT_PASSWD', usernameVariable: 'BD_NAME')]) {
-                    sh 'docker exec proyecto-web-download_db_1 mysqldump -u root -p$BD_ROOT_PASSWD $BD_NAME > db-backup.sql'
+                    sh 'docker cp wp-content/. proyecto-web-download_wordpress_1:/var/www/html/wp-content/'
+                    sh 'docker exec proyecto-web-download_wordpress_1 chown -R www-data:www-data /var/www/html/wp-content'
+                    sh 'docker cp wp-config.php proyecto-web-download_wordpress_1:/var/www/html/'
+                    sh 'docker exec proyecto-web-download_wordpress_1 chown www-data:www-data /var/www/html/wp-config.php'
+                    sh "sed -i '/GTID/d' db-backup.sql"
+                    sh 'sleep 15'
+                    sh 'cat db-backup.sql | docker exec -i proyecto-web-download_db_1 mysql -u root -p$MYSQL_ROOT_PASSWD $BD_NAME'
                 }
-            }
-        }
-        stage('copiar contenido del wordpress') {
-            steps {
-                sh 'docker cp proyecto-web-download_wordpress_1:/var/www/html/wp-content ./'
-                sh 'docker cp proyecto-web-download_wordpress_1:/var/www/html/wp-config.php .'
-            }
-        }
-        stage('Identificar a jenkins') {
-            steps {
-                sh 'git config --global user.name "Jenkins"'
-                sh 'git config --global user.email "jenkins@example.com"'
-            }
-        }
-        stage('Push al repositorio') {
-            steps {
-                withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'TOKEN', usernameVariable: 'USERNAME')]) {
-                    sh 'git add db-backup.sql'
-                    sh 'git add wp-config.php'
-                    sh 'git add wp-content'
-                    sh 'git commit -m "Backup automático: $(date +%Y-%m-%d_%H-%M)"'
-                    sh 'git push https://$USERNAME:$TOKEN@github.com/Skletin5/proyecto-web.git main'
-                }    
             }
         }
     }
