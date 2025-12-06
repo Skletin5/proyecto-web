@@ -29,7 +29,7 @@ pipeline {
         }
         stage('Push al repositorio') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'TOKEN', usernameVariable: 'USERNAME')]) {
+                withCredentials([usernamePassword(credentialsId: 'GitHub', passwordVariable: 'TOKEN', usernameVariable: 'USERNAME')]) {
                     sh 'git add db-backup.sql'
                     sh 'git add wp-config.php'
                     sh 'git add wp-content'
