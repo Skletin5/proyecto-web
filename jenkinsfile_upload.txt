@@ -10,15 +10,15 @@ pipeline {
         }
         stage('exportación de BD') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'DB_Data', passwordVariable: 'BD_ROOT_PASSWD', usernameVariable: 'BD_NAME')]) {
-                    sh 'docker exec proyecto-web-download_db_1 mysqldump -u root -p$BD_ROOT_PASSWD $BD_NAME > db-backup.sql'
+                withCredentials([usernamePassword(credentialsId: 'DB_Data', passwordVariable: 'DB_ROOT_PASSWD', usernameVariable: 'DB_NAME')]) {
+                    sh 'docker exec download_db_1 mysqldump -u root -p$DB_ROOT_PASSWD $DB_NAME > db-backup.sql'
                 }
             }
         }
         stage('copiar contenido del wordpress') {
             steps {
-                sh 'docker cp proyecto-web-download_wordpress_1:/var/www/html/wp-content ./'
-                sh 'docker cp proyecto-web-download_wordpress_1:/var/www/html/wp-config.php .'
+                sh 'docker cp download_wordpress_1:/var/www/html/wp-content ./'
+                sh 'docker cp download_wordpress_1:/var/www/html/wp-config.php .'
             }
         }
         stage('Identificar a jenkins') {
