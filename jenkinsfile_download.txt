@@ -10,20 +10,20 @@ pipeline {
         }
         stage('Construir contenedores'){
             steps {
-                sh 'docker-compose down'
-                sh 'docker-compose up -d --build'
+                sh 'docker compose down'
+                sh 'docker compose up -d --build'
             }
         }
         stage('Importación de cambios clonados') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'DB_Data', passwordVariable: 'BD_ROOT_PASSWD', usernameVariable: 'BD_NAME')]) {
-                    sh 'docker cp wp-content/. proyecto-web-download_wordpress_1:/var/www/html/wp-content/'
-                    sh 'docker exec proyecto-web-download_wordpress_1 chown -R www-data:www-data /var/www/html/wp-content'
-                    sh 'docker cp wp-config.php proyecto-web-download_wordpress_1:/var/www/html/'
-                    sh 'docker exec proyecto-web-download_wordpress_1 chown www-data:www-data /var/www/html/wp-config.php'
+                withCredentials([usernamePassword(credentialsId: 'DB_Data', passwordVariable: 'DB_ROOT_PASSWD', usernameVariable: 'DB_NAME')]) {
+                    sh 'docker cp wp-content/. download_wordpress_1:/var/www/html/wp-content/'
+                    sh 'docker exec download_wordpress_1 chown -R www-data:www-data /var/www/html/wp-content'
+                    sh 'docker cp wp-config.php download_wordpress_1:/var/www/html/'
+                    sh 'docker exec download_wordpress_1 chown www-data:www-data /var/www/html/wp-config.php'
                     sh "sed -i '/GTID/d' db-backup.sql"
                     sh 'sleep 15'
-                    sh 'cat db-backup.sql | docker exec -i proyecto-web-download_db_1 mysql -u root -p$MYSQL_ROOT_PASSWD $BD_NAME'
+                    sh 'cat db-backup.sql | docker exec -i download_db_1 mysql -u root -p$DB_ROOT_PASSWD $DB_NAME'
                 }
             }
         }
